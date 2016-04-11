@@ -9,17 +9,29 @@ import Length from '../length2.js';
 // 相等性测试
 describe('two length is equal', () => {
     // 相同单位
-    it('compare with same unit', () => {
-
-        let length1 = new Length(1, 'cm');
-        let length2 = new Length(1, 'cm');
+    it('compare two same unit is equal', () => {
+        let length1 = new Length(1);
+        let length2 = new Length(1);
         expect(Length.isEqual(length1, length2)).toBeTruthy();
     });
+
+    it('compare two same unit is not equal', () => {
+        let length1 = new Length(1);
+        let length2 = new Length(2);
+        expect(Length.isEqual(length1, length2)).toBeFalsy();
+    });
+
     // 不同单位
-    it('compare with different unit', () => {
+    it('compare two different units of equal length', () => {
+        let length1 = new Length(1, 'cm');
+        let length2 = new Length(10, 'mm');
+        expect(Length.isEqual(length1, length2)).toBeTruthy();
+    });
+
+    it('compare two different lengths of different units ', () => {
         let length1 = new Length(1, 'cm');
         let length2 = new Length(1, 'mm');
-        expect(Length.isEqual(length1, length2)).not.toBeTruthy();
+        expect(Length.isEqual(length1, length2)).toBeFalsy();
     });
 });
 
@@ -55,23 +67,3 @@ describe('sub two length', () => {
         expect(Length.sub(length1, length2)).toBe("10mm");
     });
 });
-
-// // 测试单位转换
-// describe('convert the unit', () => {
-//
-//     it('convert m to mm', () => {
-//         var length = new Length(1, 'm').formatUnit();
-//         expect(length.number).toBe(1000);
-//     });
-//
-//     it('convert cm to mm', () => {
-//         var length = new Length(1, 'cm').formatUnit();
-//         expect(length.number).toBe(10);
-//     });
-//
-//     it('convert mm to mm', () => {
-//         var length = new Length(1, 'mm').formatUnit();
-//         expect(length.number).toBe(1);
-//     });
-//
-// });
