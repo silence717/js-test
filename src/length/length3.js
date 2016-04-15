@@ -3,6 +3,8 @@
  * @author [silence]
  * @date  16/4/11
  */
+import units from './unit.js';
+
 export default class Length {
 
     constructor(length, unit) {
@@ -12,21 +14,23 @@ export default class Length {
     toString () {
         return this.length + this.unit;
     }
-    equals(len) {
-        return this.toMM(this) == this.toMM(len);
+    equals(that) {
+        if (this.unit == that.unit) {
+            return this.length == that.length;
+        } else {
+            return this.unit.value * this.length == that.unit.value * that.length;
+        }
     }
-    toMM(len) {
-        let length = len.length;
-        let unit = len.unit;
-        if (unit == 'mm') {
-            length *= 1;
-        }
-        if (unit == 'cm') {
-            length *= 10;
-        }
-        if (unit == 'm') {
-            length *= 1000;
-        }
-        return length;
+    add(that) {
+        var len = this.unit.value * this.length + that.unit.value * that.length;
+        return new Length(len, units._baseUnit).toString();
+    }
+    subtract(that) {
+        var len = this.unit.value * this.length - that.unit.value * that.length;
+        return new Length(len, units._baseUnit).toString();
     }
 }
+
+
+
+

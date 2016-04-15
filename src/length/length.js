@@ -27,7 +27,17 @@ Length.prototype.toMM = function (len) {
 };
 
 Length.prototype.equals = function (that) {
+    if (that == null ) return false;
+    if (that.constructor != Length) return false;
+    if (this == that) return true;
     return this.toMM(this) == this.toMM(that);
 };
+
+Length.Unit = [{
+    mm : '1',
+    cm: '10',
+    m: '1000'
+}];
+
 
 module.exports = Length;
