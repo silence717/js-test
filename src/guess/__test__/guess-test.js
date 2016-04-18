@@ -10,7 +10,7 @@ describe('CompareNumber', () => {
 
     let compareNumber = null;
 
-    beforeEach(function () {
+    beforeEach(() => {
         compareNumber = new CompareNumber();
     });
 

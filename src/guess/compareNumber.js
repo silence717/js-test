@@ -1,5 +1,5 @@
 /**
- * @description []
+ * @description [比较数字]
  * @author [silence]
  * @date  2016-04-15
  */
