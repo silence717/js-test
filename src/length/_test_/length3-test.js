@@ -49,12 +49,6 @@
 //         expect(lenA.add(lenB)).toBe(20);
 //     });
 //
-//     it('1 m add 1cm should be 1010 mm', () => {
-//         let lenA = new Length(1, units.m);
-//         let lenB = new Length(1, units.cm);
-//         expect(lenA.add(lenB)).not.toBe(1000);
-//     });
-//
 // });
 // // 相减性
 // describe('length sub:', () => {
@@ -63,12 +57,6 @@
 //         let lenA = new Length(1, units.cm);
 //         let lenB = new Length(1, units.mm);
 //         expect(lenA.sub(lenB)).toBe(9);
-//     });
-//
-//     it('1mm sub 2 mm should be 1 mm', () => {
-//         let lenA = new Length(1, units.mm);
-//         let lenB = new Length(2, units.mm);
-//         expect(lenA.sub(lenB)).not.toBe(1);
 //     });
 //
 //
