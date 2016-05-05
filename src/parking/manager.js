@@ -3,7 +3,6 @@
  * @author [fang.yang@shuyun.com]
  * @date  2016-04-24
  */
-import ParkingLot from './parkingLot';
 export default class Manager {
 
     constructor(parkingLotList) {
