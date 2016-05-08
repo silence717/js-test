@@ -28,7 +28,7 @@ describe('parking lot problem:', () => {
         });
 
         it('parking is full, someone take a car', () => {
-            let parkingLot = new  ParkingLot(1);
+            let parkingLot = new  ParkingLot(1, 'a');
             parkingLot.parkCar(carA);
             expect(parkingLot.parkCar(carB)).toBeFalsy();
             parkingLot.takeCar(carA);
@@ -40,13 +40,13 @@ describe('parking lot problem:', () => {
     describe('should unable to park car: ', () => {
 
         it('the parking lot is full', () => {
-            let parkingLot = new ParkingLot(1);
+            let parkingLot = new ParkingLot(1, 'a');
             parkingLot.parkCar(carA);
             expect(parkingLot.parkCar(carB)).toBeFalsy();
         });
 
         it('the parking capacity is 2 and parked 1 car, enter 2 car, one parking failed', () => {
-            let parkingLot = new ParkingLot(2);
+            let parkingLot = new ParkingLot(2, 'a');
             parkingLot.parkCar(carA);
             expect(parkingLot.parkCar(carB)).toBeTruthy();
             expect(parkingLot.parkCar(carC)).toBeFalsy();
@@ -56,7 +56,7 @@ describe('parking lot problem:', () => {
     // 可以出去
     describe('should take car successfully:', () => {
         it('陕A123 car number exists in parking lot',() => {
-            let parkingLot = new ParkingLot(3);
+            let parkingLot = new ParkingLot(3, 'a');
             parkingLot.parkCar(carA);
             expect(parkingLot.takeCar(carA)).toBeTruthy();
         });
@@ -64,7 +64,7 @@ describe('parking lot problem:', () => {
     // 出不去
     describe('should take car failed:', () => {
         it('陕A456 car number not exists in parking lot',() => {
-            let parkingLot = new ParkingLot(3);
+            let parkingLot = new ParkingLot(3, 'a');
             expect(parkingLot.takeCar(carB)).toBeFalsy();
         });
     });

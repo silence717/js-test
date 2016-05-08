@@ -10,6 +10,7 @@ export default class Manager {
     }
     // 获取空停车场
     getEmptyParking() {
+
         for (let i = 0, len = this.parkingLotList.length; i < len; i++) {
             if (!this.parkingLotList[i].isFull()) {
                 return this.parkingLotList[i];
@@ -29,7 +30,7 @@ export default class Manager {
     }
     // 判断车在哪个停车场
     getExitsParking(car) {
-        // console.log(this.parkingLotList)
+
         for (let i = 0, len = this.parkingLotList.length; i < len; i++) {
             if (this.parkingLotList[i].isExit(car)){
                 return this.parkingLotList[i];
@@ -47,6 +48,45 @@ export default class Manager {
         } else {
             return false;
         }
+    }
+    // 获取空位最少的停车场
+    getLeastEmptySpaceParkingLot() {
+        let emptySpace = 0;
+        let parking = null;
+
+        this.parkingLotList.forEach(function (parkingLot) {
+            if ( emptySpace == 0 || parkingLot.getEmptySpace() < emptySpace) {
+                emptySpace = parkingLot.getEmptySpace();
+                parking = parkingLot;
+            }
+        });
+       return parking;
+    }
+
+    // 停车到空位最少的停车场
+    parkCarToLeastEmptySpace(car) {
+        let parkingLot = this.getLeastEmptySpaceParkingLot();
+        parkingLot.parkCar(car);
+        return parkingLot.name;
+    }
+    // 获取空位最多的停车场
+    getMostEmptySpaceParkingLot() {
+        let emptySpace = 0;
+        let parking = null;
+
+        this.parkingLotList.forEach(function (parkingLot) {
+            if (parkingLot.getEmptySpace() > emptySpace) {
+                emptySpace = parkingLot.getEmptySpace();
+                parking = parkingLot;
+            }
+        })
+        return parking;
+    }
+    // 停车到空位最少的停车场
+    parkCarToMostEmptySpace(car) {
+        let parkingLot = this.getMostEmptySpaceParkingLot();
+        parkingLot.parkCar(car);
+        return parkingLot.name;
     }
 
 };

@@ -5,8 +5,9 @@
  */
 export default class ParkingLot {
 
-    constructor (capacity) {
+    constructor (capacity, name) {
         this.capacity = capacity;
+        this.name = name;
         this.parkedCar = new Map();
     }
 
@@ -35,5 +36,8 @@ export default class ParkingLot {
         }
         return false;
     }
-
+    // 获取空位
+    getEmptySpace() {
+        return this.capacity - this.parkedCar.size;
+    }
 };
